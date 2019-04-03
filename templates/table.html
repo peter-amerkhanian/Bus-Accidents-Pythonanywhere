@@ -1,0 +1,44 @@
+<!doctype html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style type="text/css">
+      body {
+        margin: 5px;
+        padding: 50px 0;
+        position: relative;
+            }
+    </style>
+</head>
+<body>
+<title> Bus Accidents</title>
+<div class="container">
+    <div class="jumbotron mb-4">
+        <div class="container">
+            <h2 role="title" class="display-4">Bus Accidents in Ecuador</h2>
+            <p class="lead">
+                A database of fatal bus accidents in Ecuador
+            </p>
+            <hr class="my-4">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Coming soon:</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Visuals</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">JSON</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    {{ table }}
+</div>
+</body>
+

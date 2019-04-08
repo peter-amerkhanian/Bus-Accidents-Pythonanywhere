@@ -5,8 +5,8 @@ from flask import Flask, render_template, Markup
 app = Flask(__name__)
 
 
-with open(r'/home/peteamer/Bus-Accidents-Pythonanywhere/processed_data.pickle', 'rb') as f:
-    html_table_processed = pickle.load(f)
+with open(r'/home/peteamer/Bus-Accidents-Pythonanywhere/processed_data.pickle', 'rb') as h:
+    html_table_processed = pickle.load(h)
 
 with open(r'/home/peteamer/Bus-Accidents-Pythonanywhere/raw_data.pickle', 'rb') as f:
     html_table_raw = pickle.load(f)

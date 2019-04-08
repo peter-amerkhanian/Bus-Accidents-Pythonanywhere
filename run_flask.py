@@ -1,23 +1,42 @@
+import pickle
 from flask import Flask, render_template, Markup
-import io
-from IPython.display import HTML
-import pandas as pd
-pd.options.display.float_format = '{:,.0f}'.format
-pd.set_option('display.max_colwidth', -1)
+
 
 app = Flask(__name__)
 
-with open('processed_data.csv', 'rb') as f:
-    df = pd.read_csv(f)
-df = df.drop(df.columns[[0, 1]], axis=1)
-str_io = io.StringIO()
-HTML(df.to_html(buf=str_io, classes='table table-striped table-dark', escape=False, index=False))
-html_table = str_io.getvalue()
+
+with open('data_processing/processed_data.pickle', 'rb') as f:
+    html_table_processed = pickle.load(f)
+
+with open('data_processing/raw_data.pickle', 'rb') as f:
+    html_table_raw = pickle.load(f)
 
 
 @app.route('/')
-def hello_world(table=Markup(html_table)):
-    return render_template('table.html', table=table)
+def home(table_processed=Markup(html_table_processed)):
+    return render_template('processed_table.html',
+                           table_processed=table_processed)
 
 
-app.run()
+@app.route('/processed-table')
+def processed(table_processed=Markup(html_table_processed)):
+    return render_template('processed_table.html',
+                           table_processed=table_processed)
+
+
+@app.route('/raw-table')
+def raw(table_raw=Markup(html_table_raw)):
+    return render_template('raw_table.html',
+                           table_raw=table_raw)
+
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+
+@app.route('/downloads')
+def downloads():
+    return render_template('downloads.html')
+
+

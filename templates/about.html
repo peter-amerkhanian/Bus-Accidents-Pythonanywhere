@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+{% set active_page = "about" %}
+{% block content %}
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <hr class="my-4">
+                <h5>About</h5>
+                <p>
+                    I currently live and work in Ecuador and use public, inter-provincial buses for both work and
+                    recreation.
+                    In reading the daily news here, I became aware that there are a fairly large number of bus accidents
+                    in Ecuador
+                    each year. I wished there was a way to track these accidents and search out any patterns in the data
+                    so that
+                    one could utilize Ecuador's bus system in the safest possible manner - and so this project began.
+                </p>
+                <hr class="my-4">
+                <h5>Raw vs. Processed Data</h5>
+                <p>
+                    The raw data table contains duplicates of certain accidents (whenever multiple news stories
+                    were published about an accident) and therefore does not make any attempts to aggregate death totals
+                    from multiple stories about the same accident. the raw data table also does not make any attempt to
+                    convert non integer accident times (i.e. "medianoche", "madrugada") into integer times.
+                    <br/><br/>
+                    The processed data table automates the process of combining then dropping duplicate rows and converts
+                    non integer times into integers so that the table can be read clearly and easily right off the bat
+                    and be immediately useful in analysis.
+                </p>
+            </div>
+            <div class="col">
+                <hr class="my-4">
+                <h5>Tech Stack</h5>
+                <p>
+                    This project was created in <b>Python 3.6</b> using <b>Flask</b> as the web framework, <b>BeautifulSoup</b>
+                    for data retrieval and
+                    <b>Pandas</b> for
+                    data cleaning.
+                </p>
+                <br/>
+                <hr class="my-4">
+                <h5>Methodology</h5>
+                <p>
+                <div style="text-align: left;">1.</div>
+                    The pipeline begins with retrieving every news story about fatal bus accidents in Ecuador published
+                    in the Quito based El Commercio. This preliminary retrieval was done using the El Commercio website's
+                    basic search function to query "bus accidente ecuador." <br/>
+                <div class="mt-3" style="text-align: left;">2.</div>
+                    All of those stories are then retrieved and filtered for mentions of fatalities. <br/>
+                <div class="mt-3" style="text-align: left;">3.</div>
+                    The remaining stories about fatal accidents are then scanned for the exact death count,
+                    the accident time, the accident date and the accident route.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

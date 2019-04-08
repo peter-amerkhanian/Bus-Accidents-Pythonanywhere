@@ -5,10 +5,10 @@ from flask import Flask, render_template, Markup
 app = Flask(__name__)
 
 
-with open('processed_data.pickle', 'rb') as f:
+with open('/processed_data.pickle', 'rb') as f:
     html_table_processed = pickle.load(f)
 
-with open('raw_data.pickle', 'rb') as f:
+with open('/raw_data.pickle', 'rb') as f:
     html_table_raw = pickle.load(f)
 
 
